@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-
+import { persist, createJSONStorage } from "zustand/middleware";
 export type CartItem = {
   id: number | string;
   name: string;
@@ -149,6 +148,7 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: "axion-cart",
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 type WishlistProduct = {
   id: number | string;
@@ -63,6 +63,7 @@ export const useWishlistStore =
       }),
       {
         name: "axion-wishlist",
+        storage: createJSONStorage(() => localStorage),
       }
     )
   );
